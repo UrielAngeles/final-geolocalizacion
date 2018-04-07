@@ -6,12 +6,14 @@
 package proyecto.hdp;
 
 import java.util.ArrayList;
+import org.springframework.data.annotation.Id;
 
 /**
  *
  * @author UriDrack7
  */
 public class Usuario {
+    @Id
     private String id;
     private String nickname;
     private String mail;
@@ -66,4 +68,20 @@ public class Usuario {
     public void setPosicion(Posicion posicion) {
         this.posicion = posicion;
     }
+
+    public Usuario(String id) {
+        this.id = id;
+    }
+
+    public Usuario(String nickname, String mail, String password, ArrayList<Mensaje> mensajes, Posicion posicion) {
+        this.nickname = nickname;
+        this.mail = mail;
+        this.password = password;
+        this.mensajes = mensajes;
+        this.posicion = posicion;
+    }
+
+    public Usuario() {
+    }
+    
 }

@@ -5,10 +5,12 @@
  */
 package proyecto.hdp;
 
+import org.springframework.data.mongodb.repository.MongoRepository;
+
 /**
  *
  * @author UriDrack7
  */
-public interface RepositorioUsuario {
+public interface RepositorioUsuario extends MongoRepository<Usuario, String> {
     
 }
