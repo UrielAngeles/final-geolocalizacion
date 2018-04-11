@@ -1,5 +1,6 @@
 package proyecto.hdp;
 
+import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,32 +24,54 @@ public class UsuarioTest {
             //Generamos un objeto
             Usuario u=new Usuario();
             Posicion pos=new Posicion();
-            Mensaje mena=new Mensaje();
+            Mensaje mensa=new Mensaje();
             
             //Generar un usuario con todos sus atributos, incluyendo un mensaje y posicion
             //Pág 30 del libro
             
+            pos.setLat(19.90);
+            pos.setLon(100.0);
             
-            Assert.assertEquals(4, 2+2);
-	}
+            mensa.setContenido("Primer Contenido");
+            u.setMail("urielangeles96@gmail.com");
+            ArrayList<Mensaje>mensajes=new ArrayList<>();
+            mensajes.add(mensa);
+            u.setMensajes(mensajes);
+            u.setPassword("cr7");
+            u.setNickname("UriDrack7");
+            u.setPosicion(pos);
+            u.setId("Primero");
+            //Guardamos
+            Usuario guardado= repo.save(u);
+            Assert.assertEquals(guardado,u);
+            }
         
         @Test
 	public void actualizar() {
-            Assert.assertEquals(4, 2+2);
+            
+            
+            
+            
 	}
         
         @Test
 	public void borrar() {
-            Assert.assertEquals(4, 2+2);
+            Usuario borrado= repo.deleteById("Primero");
+            Assert.assertEquals("Primero", borrado);
 	}
         
         @Test
 	public void buscarTodo() {
-            Assert.assertEquals(4, 2+2);
+          //int tamano=  repo.findAll().size();
+            //Assert.assertEquals(1, tamano);
+            
+           Usuario encontrado= repo.findAll().get(0);
+           Assert.assertEquals("Primero", encontrado.getId());
 	}
 
         @Test
 	public void buscarPorId() {
-            Assert.assertEquals(4, 2+2);
+        Usuario usuarioBuscado= repo.findById("Primero").get();
+        Assert.assertEquals("Primero",usuarioBuscado.getId());
 	}
 }
