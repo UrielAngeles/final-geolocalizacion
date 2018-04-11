@@ -56,8 +56,10 @@ public class UsuarioTest {
         
         @Test
 	public void borrar() {
-            Usuario borrado= repo.deleteById("Primero");
-            Assert.assertEquals("Primero", borrado);
+            
+            
+            
+            
 	}
         
         @Test
